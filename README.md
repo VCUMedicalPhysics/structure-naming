@@ -1,5 +1,6 @@
 # structure-naming
 A series of scripts were developed to aid structure naming in the Pinnacle Treatment Planning System. The first script loads a graphical interface that allows user specified names to auto-populate the Pinnacle region of interest list.  This interface shows the master list of TG-263 approved structure names that can be used in Pinnacle. The user can select names from the master list or from a disease site specific list containing a subset of the master name list. Target and non-standard structures can be added using the TG-263 approved nomenclature. 
+<br><br>
 Once the desired list of structure names is chosen, the names are saved to disk. A secondary Pinnacle script loads the new list of names into the active Pinnacle session and populates the region of interest list. Duplicate names are not inserted.
 In addition, each disease site has a script that can simply load all of the TG-263 approved structure names that are deemed commonly used by a radiation oncologist for a given diagnosis. The final script removes all structures from the Pinnacle region of interest list if no contouring was done. This feature provides a quick way to remove unnecessary structures added by the site specific bulk import.
 
