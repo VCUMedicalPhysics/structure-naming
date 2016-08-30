@@ -1,0 +1,14 @@
+Cochlea_R
+Pituitary
+SpinalCord_PRV
+Lens_L
+Lens_R
+Cochlea_L
+OpticNrv_L
+OpticNrv_R
+OpticChiasm
+Eye_R
+Eye_L
+Brainstem
+Brain
+

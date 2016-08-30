@@ -1,0 +1,17 @@
+Stomach
+Spleen
+Bowel_Space
+Bowel_Small
+Pancreas
+Liver
+Kidneys
+Kidney_R
+Kidney_L
+Kidney_Cortex_L
+Ileum
+Colon
+A_Celiac
+SpinalCord
+Duodenum
+Bowel_Large
+
