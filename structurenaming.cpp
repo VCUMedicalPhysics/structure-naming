@@ -105,7 +105,7 @@ void StructureNaming::copyMasterListStructures() {
 }
 
 void StructureNaming::loadStructureDictionary() {
-    fstream myfile ("/rdoppg/clinres/fsleeman/QtProjects/StructureNamingQt/structures/structure_dictionary.txt");
+    fstream myfile ("../structure-naming/structures/structure_dictionary.txt");
     string line;
     QStringList list;
 
@@ -183,19 +183,19 @@ void StructureNaming::openAddTarget() {
 }
 
 void StructureNaming::updateStructureGroups() {
-    for(int userIndex = 0; userIndex < ui->users_combo_box->count(); userIndex++) {
-        string userName = ui->users_combo_box->currentText().toStdString();
+    //for(int userIndex = 0; userIndex < ui->users_combo_box->count(); userIndex++) {
+        //string userName = ui->users_combo_box->currentText().toStdString();
 
-    }
+    //}
 }
 
 int StructureNaming::loadStructureGroups() {
     DIR *dir, *dirInside;
     struct dirent *ent;
-    string structure_directory = "../StructureNamingQt/structures"; //"/rdoppg/clinres/fsleeman/QtProjects/StructureNamingQt/structures";
+    string structure_directory = "../structure-naming/structures";
     string structure_user_directory;
 
-    structureGroupMap.clear();
+    //structureGroupMap.clear();
 
     ui->structure_group_list_widget->setSortingEnabled(true);
     ui->structure_group_list_widget->sortItems();
@@ -211,13 +211,23 @@ int StructureNaming::loadStructureGroups() {
                 if(ent->d_name[0] == '.') {
                     continue;
                 }
+
                 map<string, vector<string> > groupMap;
                 structure_user_directory = structure_directory + "/" + ent->d_name;
                 string directoryName = ent->d_name;
+
                 if ((dirInside = opendir (structure_user_directory.c_str())) != NULL) {
                     // print all the files and directories within directory
                     while ((ent = readdir (dirInside)) != NULL) {
                         if(ent->d_type == DT_REG) {
+                            string filename = ent->d_name;
+                            if(filename.length() < 5) {
+                                continue;
+                            }
+                            else if(filename.substr(filename.length() - 4, 4) != ".txt") {
+                                continue;
+                            }
+
                             vector<string> temp;
                             string groupName = ent->d_name;
                             groupName = groupName.substr(0, groupName.size() - 4);
@@ -262,9 +272,11 @@ int StructureNaming::loadStructureGroups() {
 void StructureNaming::setUserGroupList() {
     QString userName = ui->users_combo_box->currentText();
     ui->structure_group_combo_box->clear();
-    for (auto& x: structureGroupMap[userName.toStdString()]) {
-        ui->structure_group_combo_box->addItem(QString(x.first.c_str()));
-    }
+    for (auto& x: structureGroupMap[userName.toStdString()]) {    
+        if(x.first.size() > 0) {
+            ui->structure_group_combo_box->addItem(QString(x.first.c_str()));
+        }
+    }    
 }
 
 void StructureNaming::setGroupStructureList() {

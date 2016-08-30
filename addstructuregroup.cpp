@@ -42,6 +42,10 @@ void AddStructureGroup::saveGroup() {
             QMessageBox::warning(this, QString("Group Name Exists"), QString(message.c_str()));
             return;
         }
+        else if(newGroupName.length() == 0) { //FIXME trim whitespace first
+            QMessageBox::warning(this, QString("Empty Structure Name"), QString("The structure name cannot be blank."));
+            return;
+        }
     }
 
     vector<string> workingStructureNames;
@@ -51,6 +55,7 @@ void AddStructureGroup::saveGroup() {
     groupMap[ui->user_name_combo_box->currentText().toStdString()][newGroupName] = workingStructureNames;
 
     emit structureGroupAdded();
+    emit close();
 }
 
 void AddStructureGroup::loadUserNames() {
@@ -68,7 +73,9 @@ void AddStructureGroup::loadStructureGroups() {
     ui->existing_structure_group_list_widget->clear();
     ui->working_structure_list_widget->clear();
     for (auto& x: groupMap[ui->user_name_combo_box->currentText().toStdString()]) {
-        ui->existing_structure_group_list_widget->addItem(QString(x.first.c_str()));
+        if(x.first.size() > 0) {
+            ui->existing_structure_group_list_widget->addItem(QString(x.first.c_str()));
+        }
     }
     loadWorkingList();
 }
