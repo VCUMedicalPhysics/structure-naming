@@ -25,9 +25,9 @@ signals:
 
 private:
     Ui::AddStructureGroup *ui;
-    //std::map<std::string, std::map<std::string, std::vector<std::string> > >& groupMap;
     void loadUserNames();
     void loadWorkingList();
+    std::vector<std::string> getGroupFiles(std::string user);
 };
 
 #endif // ADDSTRUCTUREGROUP_H

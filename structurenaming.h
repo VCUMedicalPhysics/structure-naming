@@ -21,7 +21,6 @@ public:
     bool addWorkingStructure(QString structureName);
     std::map<std::string, std::map<std::string, std::vector<std::string> > >& getStructureGroupMap();
     QList<QListWidgetItem*> getWorkingList();
-    std::string& getFoo() { return foo; }
     ~StructureNaming();
 private:
     Ui::StructureNaming *ui;
@@ -29,12 +28,10 @@ private:
     AboutDialog *aboutDialog;
     TargetVolumeDialog *targetVolumeDialog;
     AddStructureGroup *addStructureGroup;
+    std::map<std::string, std::map<std::string, std::vector<std::string> > > structureGroupMap;
+
     void loadStructureDictionary();
 
-
-
-    std::map<std::string, std::map<std::string, std::vector<std::string> > > structureGroupMap;
-    std::string foo;
 private slots:
     void updateStructureGroups();
     int loadStructureGroups();
@@ -47,7 +44,6 @@ private slots:
     void openAddTarget();
     void removeWorkingStructures();
     void copyMasterListStructures();
-    void test();
     void openAddPlanningAssist();
     void exitProgram();
     void savePinnacleStructureList();

@@ -24,7 +24,6 @@ StructureNaming::StructureNaming(QWidget *parent) :
     loadStructureDictionary();
     loadStructureGroups();
 
-    connect(ui->select_all_button, SIGNAL(clicked()), this, SLOT(test()));
     connect(ui->actionSavePinnacleStructureList, SIGNAL(triggered()), this, SLOT(savePinnacleStructureList()));
     connect(ui->actionAddNewStructureGroup, SIGNAL(triggered()), this, SLOT(openAddStructureGroup()));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(openAboutDialog()));
@@ -170,10 +169,6 @@ void StructureNaming::exitProgram() {
      QApplication::quit();
 }
 
-void StructureNaming::test() {
-    std::cout << "test" << std::endl;
-}
-
 void StructureNaming::openAddPlanningAssist() {
     dialog->show();
 }
@@ -183,10 +178,7 @@ void StructureNaming::openAddTarget() {
 }
 
 void StructureNaming::updateStructureGroups() {
-    //for(int userIndex = 0; userIndex < ui->users_combo_box->count(); userIndex++) {
-        //string userName = ui->users_combo_box->currentText().toStdString();
-
-    //}
+    emit ui->users_combo_box->currentIndexChanged(ui->users_combo_box->currentText());
 }
 
 int StructureNaming::loadStructureGroups() {
