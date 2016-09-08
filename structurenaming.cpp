@@ -6,7 +6,9 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-#include "dirent.h"
+#include <dirent.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <sstream>
 #include <vector>
 #include <QUrl>
@@ -14,11 +16,11 @@
 
 using namespace std;
 
-
 StructureNaming::StructureNaming(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::StructureNaming)
 {
+    installDirectory = getInstallDirectory();
     ui->setupUi(this);
 
     loadStructureDictionary();
@@ -57,6 +59,18 @@ StructureNaming::~StructureNaming()
     delete aboutDialog;
     delete targetVolumeDialog;
     delete ui;
+}
+
+string StructureNaming::getInstallDirectory() {
+    char* path;
+    path = getenv("STRUCTURENAMING");
+    if(path != NULL) {
+        cout << path << endl;
+        return string(path);
+    }
+    else {
+        return string("");
+    }
 }
 
 std::map<std::string, std::map<std::string, std::vector<std::string> > >& StructureNaming::getStructureGroupMap() {
@@ -104,7 +118,8 @@ void StructureNaming::copyMasterListStructures() {
 }
 
 void StructureNaming::loadStructureDictionary() {
-    fstream myfile ("../structure-naming/structures/structure_dictionary.txt");
+    string structureDirectoryPath = installDirectory + string("/structures/structure_dictionary.txt");
+    fstream myfile(structureDirectoryPath.c_str());
     string line;
     QStringList list;
 
@@ -151,11 +166,9 @@ void StructureNaming::openAddStructureGroup() {
 }
 
 void StructureNaming::savePinnacleStructureList() {
-    std::cout << "saving" << std::endl;
     string pinnacle_pid = "9999"; //FIXME get real PID
     string savePath = "/tmp/test.Script";
-    ofstream scriptFile;
-    scriptFile.open(savePath, ios::out);
+    ofstream scriptFile(savePath.c_str());
     scriptFile << "Store.StringAt.ScriptCommand = \"LoadNoCheckSum = /usr/local/adacbeta/PinnacleSiteData/Scripts/add_single_roi.Script.fsleeman\";\n";
     for(int i = 0; i < ui->working_structure_list_widget->count(); i++) {
         string structureName = ui->working_structure_list_widget->item(i)->text().toStdString();
@@ -177,17 +190,17 @@ void StructureNaming::openAddTarget() {
     targetVolumeDialog->show();
 }
 
-void StructureNaming::updateStructureGroups() {
-    emit ui->users_combo_box->currentIndexChanged(ui->users_combo_box->currentText());
+void StructureNaming::updateStructureGroups() {    
+    setUserGroupList();
 }
 
 int StructureNaming::loadStructureGroups() {
     DIR *dir, *dirInside;
     struct dirent *ent;
-    string structure_directory = "../structure-naming/structures";
-    string structure_user_directory;
+    struct stat sb;
 
-    //structureGroupMap.clear();
+    string structure_directory = installDirectory + string("/structures");
+    string structure_user_directory;
 
     ui->structure_group_list_widget->setSortingEnabled(true);
     ui->structure_group_list_widget->sortItems();
@@ -196,10 +209,11 @@ int StructureNaming::loadStructureGroups() {
     if ((dir = opendir (structure_directory.c_str())) != NULL) {
         // print all the files and directories within directory
         while ((ent = readdir (dir)) != NULL) {
-            if(ent->d_type == DT_REG) {
+            stat(ent->d_name, &sb);
+            if(S_ISREG(sb.st_mode)) {
                 continue;
             }
-            else if(ent->d_type == DT_DIR) {
+            else if(S_ISDIR(sb.st_mode)) {
                 if(ent->d_name[0] == '.') {
                     continue;
                 }
@@ -207,41 +221,38 @@ int StructureNaming::loadStructureGroups() {
                 map<string, vector<string> > groupMap;
                 structure_user_directory = structure_directory + "/" + ent->d_name;
                 string directoryName = ent->d_name;
-
                 if ((dirInside = opendir (structure_user_directory.c_str())) != NULL) {
                     // print all the files and directories within directory
-                    while ((ent = readdir (dirInside)) != NULL) {
-                        if(ent->d_type == DT_REG) {
-                            string filename = ent->d_name;
-                            if(filename.length() < 5) {
-                                continue;
-                            }
-                            else if(filename.substr(filename.length() - 4, 4) != ".txt") {
-                                continue;
-                            }
+                    while ((ent = readdir (dirInside)) != NULL) {                                                
+                        string filename = ent->d_name;
+                        if(filename.length() < 5) {
+                            continue;
+                        }
+                        else if(filename.substr(filename.length() - 4, 4) != ".txt") {
+                            continue;
+                        }
 
-                            vector<string> temp;
-                            string groupName = ent->d_name;
-                            groupName = groupName.substr(0, groupName.size() - 4);
+                        vector<string> temp;
+                        string groupName = ent->d_name;
+                        groupName = groupName.substr(0, groupName.size() - 4);
 
-                            string groupFileName = structure_user_directory;
-                            groupFileName += "/" + string(ent->d_name);
+                        string groupFileName = structure_user_directory;
+                        groupFileName += "/" + string(ent->d_name);
 
-                            fstream myfile(groupFileName);
-                            string line;
-                            groupMap[groupName] = temp;
-                            if (myfile.is_open()) {
-                                while (getline(myfile,line)) {
-                                    if(line.size() > 0) {
-                                        groupMap[groupName].push_back(line);
-                                    }
+                        ifstream myfile(groupFileName.c_str());
+                        string line;
+                        groupMap[groupName] = temp;
+                        if (myfile.is_open()) {
+                            while (getline(myfile,line)) {
+                                if(line.size() > 0) {
+                                    groupMap[groupName].push_back(line);
                                 }
-                                myfile.close();
                             }
+                            myfile.close();
                         }
                     }
                     structureGroupMap[directoryName] = groupMap;
-                    closedir (dirInside);
+                    closedir(dirInside);
                 }
             }
             else {
@@ -252,8 +263,9 @@ int StructureNaming::loadStructureGroups() {
         closedir(dir);
     }
 
-    for (auto& x: structureGroupMap) {
-        ui->users_combo_box->addItem(QString(x.first.c_str()));
+    typedef map<string, map<string, vector<string> > >::iterator it_type;
+    for(it_type iterator = structureGroupMap.begin(); iterator != structureGroupMap.end(); iterator++) {
+        ui->users_combo_box->addItem(QString(iterator->first.c_str()));
     }
     setUserGroupList();
     setGroupStructureList();
@@ -264,9 +276,11 @@ int StructureNaming::loadStructureGroups() {
 void StructureNaming::setUserGroupList() {
     QString userName = ui->users_combo_box->currentText();
     ui->structure_group_combo_box->clear();
-    for (auto& x: structureGroupMap[userName.toStdString()]) {    
-        if(x.first.size() > 0) {
-            ui->structure_group_combo_box->addItem(QString(x.first.c_str()));
+
+    for(map<string, vector<string> >::iterator it = structureGroupMap[userName.toStdString()].begin();
+        it != structureGroupMap[userName.toStdString()].end(); it++) {
+        if(it->first.size() > 0) {
+            ui->structure_group_combo_box->addItem(QString(it->first.c_str()));
         }
     }    
 }
@@ -276,8 +290,9 @@ void StructureNaming::setGroupStructureList() {
     QString groupName = ui->structure_group_combo_box->currentText();
     ui->structure_group_list_widget->clear();
     vector<string> temp = structureGroupMap[userName.toStdString()][groupName.toStdString()];
-    for (auto& x: temp) {
-        ui->structure_group_list_widget->addItem(QString(x.c_str()));
+
+    for(vector<string>::iterator it = temp.begin(); it != temp.end(); it++) {
+        ui->structure_group_list_widget->addItem(QString((*it).c_str()));
     }
 }
 

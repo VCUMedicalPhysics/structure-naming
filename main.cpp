@@ -1,4 +1,3 @@
-#include "mainwindow.h"
 #include "structurenaming.h"
 #include "createplanningassistdialog.h"
 #include "aboutdialog.h"
@@ -10,16 +9,8 @@ int main(int argc, char *argv[])
     app.setApplicationName("Structure Naming");
 
     StructureNaming w;
-    //w.loadStructureDictionary();
     w.setWindowTitle("Structure Naming");
     w.show();
-
-
-    /*CreatePlanningAssistDialog dialog;
-    dialog.show();
-    AboutDialog d;
-    d.show();
-*/
 
     return app.exec();
 }

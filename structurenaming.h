@@ -21,6 +21,7 @@ public:
     bool addWorkingStructure(QString structureName);
     std::map<std::string, std::map<std::string, std::vector<std::string> > >& getStructureGroupMap();
     QList<QListWidgetItem*> getWorkingList();
+    std::string getInstallDirectory();
     ~StructureNaming();
 private:
     Ui::StructureNaming *ui;
@@ -28,7 +29,8 @@ private:
     AboutDialog *aboutDialog;
     TargetVolumeDialog *targetVolumeDialog;
     AddStructureGroup *addStructureGroup;
-    std::map<std::string, std::map<std::string, std::vector<std::string> > > structureGroupMap;
+    std::map<std::string, std::map<std::string, std::vector<std::string> > > structureGroupMap;    
+    std::string installDirectory;
 
     void loadStructureDictionary();
 
