@@ -1,0 +1,11 @@
+Store.Load = "/home/fsleeman/foo/install.Store";
+Store.StringAt.ScriptCommand = Store.At.VCU_PACKAGE.Value;
+Store.At.ScriptCommand.AppendString = "/Python/bin/python ";
+Store.At.ScriptCommand.AppendString = Store.At.VCU_PACKAGE.Value;
+Store.At.ScriptCommand.AppendString = "/structure_naming/get_pinnacle_pid.py";
+SpawnCommand = Store.At.ScriptCommand.Value;
+
+IF.FileErrorList.HasElements.THEN.FileErrorList.DestroyAllChildren = "";
+WindowList.FileErrorHierarchy.Destroy = "";
+
+ExecuteNow = "/tmp/add_structures.Script";

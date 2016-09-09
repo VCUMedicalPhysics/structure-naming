@@ -1,0 +1,7 @@
+Store.FloatAt.Curves = RoiList.Current.CurveCount;
+Store.FloatAt.Zero = 0.0;
+Echo = Store.At.Curves;
+Echo = Store.At.Zero;
+IF.Store.At.Curves.Value.EQUALTO.Store.At.Zero.Value.
+	THEN.RoiList.Current.IsSelectedForDeletion=1;
+

@@ -1,0 +1,34 @@
+Store.Load = "STRUCTURENAMINGPATH/scripts/install.Store";
+Store.StringAt.ScriptCommand = "LoadNoCheckSum = ";
+Store.At.ScriptCommand.AppendString = Store.At.STRUCTURENAMING.Value;
+Store.At.ScriptCommand.AppendString = "/scripts/add_single_roi.Script";
+
+IF.FileErrorList.HasElements.THEN.FileErrorList.DestroyAllChildren = "";
+WindowList.FileErrorHierarchy.Destroy = "";
+
+Store.StringAt.RoiToAdd = "Brain";
+IF.RoiList.#"!ContainsObject".Brain.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Brainstem";
+IF.RoiList.#"!ContainsObject".Brainstem.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Cochlea_L";
+IF.RoiList.#"!ContainsObject".Cochlea_L.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Cochlea_R";
+IF.RoiList.#"!ContainsObject".Cochlea_R.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Eye_L";
+IF.RoiList.#"!ContainsObject".Eye_L.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Eye_R";
+IF.RoiList.#"!ContainsObject".Eye_R.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Lens_L";
+IF.RoiList.#"!ContainsObject".Lens_L.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Lens_R";
+IF.RoiList.#"!ContainsObject".Lens_R.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "OpticChiasm";
+IF.RoiList.#"!ContainsObject".OpticChiasm.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "OpticNrv_L";
+IF.RoiList.#"!ContainsObject".OpticNrv_L.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "OpticNrv_R";
+IF.RoiList.#"!ContainsObject".OpticNrv_R.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Pituitary";
+IF.RoiList.#"!ContainsObject".Pituitary.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "SpinalCord_PRV";
+IF.RoiList.#"!ContainsObject".SpinalCord_PRV.THEN.Store.At.ScriptCommand.Execute="";

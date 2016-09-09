@@ -1,0 +1,12 @@
+WindowList.RoiDelete.Create = "Delete ROI...";
+RoiList.#"*".IsSelectedForDeletion = 0;
+
+Store.Load = "STRUCTURENAMINGPATH/scripts/install.Store";
+Store.StringAt.ScriptCommand = Store.At.STRUCTURENAMING.Value;
+Store.At.ScriptCommand.AppendString = "/scripts/innerscript.Script";
+
+RoiList.ChildrenEachCurrent.#"@".Script.ExecuteNow = Store.At.ScriptCommand.Value;
+DeleteSelectedROIs = "Delete Selected ROIs";
+
+WindowList.RoiDelete.Unrealize = "Dismiss";
+RoiList.#"*".IsSelectedForDeletion = "0";

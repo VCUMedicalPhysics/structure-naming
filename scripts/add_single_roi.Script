@@ -1,0 +1,2 @@
+CreateNewROI = "Add ROI";
+RoiList .Current .Name = Store.StringAt.RoiToAdd;

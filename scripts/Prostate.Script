@@ -1,0 +1,36 @@
+Store.Load = "STRUCTURENAMINGPATH/scripts/install.Store";
+Store.StringAt.ScriptCommand = "LoadNoCheckSum = ";
+Store.At.ScriptCommand.AppendString = Store.At.STRUCTURENAMING.Value;
+Store.At.ScriptCommand.AppendString = "/scripts/add_single_roi.Script";
+
+IF.FileErrorList.HasElements.THEN.FileErrorList.DestroyAllChildren = "";
+WindowList.FileErrorHierarchy.Destroy = "";
+
+Store.StringAt.RoiToAdd = "Anal_Canal";
+IF.RoiList.#"!ContainsObject".Anal_Canal.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Bladder";
+IF.RoiList.#"!ContainsObject".Bladder.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Bladder_Wall";
+IF.RoiList.#"!ContainsObject".Bladder_Wall.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Bone_Illiums";
+IF.RoiList.#"!ContainsObject".Bone_Illiums.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Bowel_Large";
+IF.RoiList.#"!ContainsObject".Bowel_Large.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Femur_L";
+IF.RoiList.#"!ContainsObject".Femur_L.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Femur_R";
+IF.RoiList.#"!ContainsObject".Femur_R.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "PenileBulb";
+IF.RoiList.#"!ContainsObject".PenileBulb.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Penis";
+IF.RoiList.#"!ContainsObject".Penis.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Prostate";
+IF.RoiList.#"!ContainsObject".Prostate.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Rectal_Wall";
+IF.RoiList.#"!ContainsObject".Rectal_Wall.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Rectum";
+IF.RoiList.#"!ContainsObject".Rectum.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "SeminalVes";
+IF.RoiList.#"!ContainsObject".SeminalVes.THEN.Store.At.ScriptCommand.Execute="";
+Store.StringAt.RoiToAdd = "Testis";
+IF.RoiList.#"!ContainsObject".Testis.THEN.Store.At.ScriptCommand.Execute="";
