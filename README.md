@@ -18,7 +18,8 @@ You can list the new Qt4 with this command:
 <br>/usr/sbin/pkgchk -L CSWqt4-dev
 <br><br>Once Qt4 is installed, your environmental variables must be updated. Using the instructions above will but the Qt4 files under /opt/csw/bin and /opt/csw/lib which is not a default location for Solaris. If you are using the c-shell (csh) add the following to your .cshrc file in your home holder:
 <br>setenv PATH ${PATH}:/opt/csw/bin 
-<br>setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/opt/csw/lib 
+<br>setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/opt/csw/lib
+<br>setenv STRUCTURENAMING "your install directory"
 <br><br>
 There will be a slightly different process of setting the environmental variables if you use a different shell, but instructions can be found online.
 <br><br>
