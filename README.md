@@ -24,9 +24,9 @@ There will be a slightly different process of setting the environmental variable
 <br><br>
 After Qt4 is installed, download and unzip the structure-naming git repository. In the structure-naming directory run the following commands to compile the program:
 <br><br>
-qmake -project
-qmake structure-naming.pro
-/usr/ccs/bin/make
+<br>qmake -project
+<br>qmake structure-naming.pro
+<br>/usr/ccs/bin/make
 <br><br>
 For the Solaris 10 machine used for testing this program, the program “make” was installed under /usr/ccs/bin/ but it might be different for other configurations and versions of Solaris.
 <br><br>
