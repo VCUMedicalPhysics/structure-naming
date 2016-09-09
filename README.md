@@ -23,7 +23,6 @@ You can list the new Qt4 with this command:
 There will be a slightly different process of setting the environmental variables if you use a different shell, but instructions can be found online.
 <br><br>
 After Qt4 is installed, download and unzip the structure-naming git repository. In the structure-naming directory run the following commands to compile the program:
-<br><br>
 <br>qmake -project
 <br>qmake structure-naming.pro
 <br>/usr/ccs/bin/make
