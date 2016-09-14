@@ -13,6 +13,7 @@
 #include <vector>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -165,11 +166,20 @@ void StructureNaming::openAddStructureGroup() {
     addStructureGroup->show();
 }
 
-void StructureNaming::savePinnacleStructureList() {
-    string pinnacle_pid = "9999"; //FIXME get real PID
-    string savePath = "/tmp/test.Script";
+void StructureNaming::savePinnacleStructureList() {   
+    pid_t pinnacle_pid = getpgid(getpid());
+    if(pinnacle_pid == -1) {
+        QMessageBox::warning(this, QString("Pinnacle PID Error"), QString("Could not get the process ID for the current instance of Pinnacle. Defaulting to 9999 for saving structure names."));
+        pinnacle_pid = 9999;
+    }
+
+    string pinnacle_pid_string = "";
+    stringstream ss;
+    ss << pinnacle_pid;
+    pinnacle_pid_string = ss.str();
+    string savePath = string("/tmp/add_structures_") + pinnacle_pid_string + string(".Script");
     ofstream scriptFile(savePath.c_str());
-    scriptFile << "Store.StringAt.ScriptCommand = \"LoadNoCheckSum = /usr/local/adacbeta/PinnacleSiteData/Scripts/add_single_roi.Script.fsleeman\";\n";
+    scriptFile << "Store.StringAt.ScriptCommand = \"LoadNoCheckSum = " + getInstallDirectory() + "/scripts/add_single_roi.Script\";\n";
     for(int i = 0; i < ui->working_structure_list_widget->count(); i++) {
         string structureName = ui->working_structure_list_widget->item(i)->text().toStdString();
         scriptFile << "Store.StringAt.RoiToAdd = \"" << structureName <<  "\";\n";

@@ -25,7 +25,8 @@ def main():
         copy('install.py', join(install_directory, 'install.py'))
         copy('install.sh', join(install_directory, 'install.sh'))
         copytree('scripts', join(install_directory, 'scripts'))
-        try:
+        copytree('structures', join(install_directory, 'structures')) 
+	try:
             copy('structure-naming', install_directory)
         except:
             pass
@@ -56,7 +57,7 @@ def main():
 
     # write store file
     store_file = open(join(structure_naming_path, 'install.Store'), 'w')
-    store_file.write('At .' + install_directory + ' = SimpleString {\n')
+    store_file.write('At .STRUCTURENAMING = SimpleString {\n')
     store_file.write('\tString = "' + install_directory + '";\n')
     store_file.write('};')
     store_file.close()

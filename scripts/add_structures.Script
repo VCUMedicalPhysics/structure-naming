@@ -1,8 +1,7 @@
-Store.Load = "/home/fsleeman/foo/install.Store";
-Store.StringAt.ScriptCommand = Store.At.VCU_PACKAGE.Value;
-Store.At.ScriptCommand.AppendString = "/Python/bin/python ";
-Store.At.ScriptCommand.AppendString = Store.At.VCU_PACKAGE.Value;
-Store.At.ScriptCommand.AppendString = "/structure_naming/get_pinnacle_pid.py";
+Store.Load = "STRUCTURENAMINGPATH/scripts/install.Store";
+Store.StringAt.ScriptCommand = "/usr/bin/python ";
+Store.At.ScriptCommand.AppendString = Store.At.STRUCTURENAMING.Value;
+Store.At.ScriptCommand.AppendString = "/scripts/get_pinnacle_pid.py";
 SpawnCommand = Store.At.ScriptCommand.Value;
 
 IF.FileErrorList.HasElements.THEN.FileErrorList.DestroyAllChildren = "";
