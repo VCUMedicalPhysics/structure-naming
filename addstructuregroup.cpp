@@ -94,7 +94,7 @@ void AddStructureGroup::saveGroup() {
                     }
                 }
                 if(!groupFound) {
-                    string filename = ((StructureNaming*)this->parent())->getInstallDirectory() + string("structures/");
+                    string filename = ((StructureNaming*)this->parent())->getInstallDirectory() + string("/structures/");
                     filename += iterator->first;
                     filename += "/";
                     filename += ui->new_structure_group_line_edit->text().toStdString();

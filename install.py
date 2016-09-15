@@ -65,7 +65,8 @@ def main():
     print('\nFile copy complete, script system is now installed')
 
     print('\n\nPlease add the following lines to your .cshrc profile:')
-    print('\tsetenv PATH ${PATH}:/opt/csw/bin\n')
+    print('\tsetenv STRUCTURENAMING ${STRUCTURENAMING}:' + install_directory)
+    print('\tsetenv PATH ${PATH}:/opt/csw/bin')
     print('\tsetenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/opt/csw/lib\n')
 
 
