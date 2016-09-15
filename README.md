@@ -40,3 +40,10 @@ Also, you can ignore the follow error message if you see it in the console when 
 
 #Running the Program
 You can start the <b>structure-naming</b> program by running the load_structure_naming.Script. After you run the program and select your structure names, save the new structure list. To load the new structures in your open plan run the add_structures.Script. Any structures in your new list, not already in the current ROI list, will be loaded. For more information about how to use this program please read the attached ClinicalStructureNamingToolUserGuide.pdf file.
+
+#Use structure-naming from git
+The build instructions and Pinnacle scripts were created for using with the downloaded zip file from the master branch of this git repository. If you are planning on using the structure-naming tool from a clone of this repository a few minor changes will need to be made.
+<ol>
+<li> Instead of running "qmake structure-naming.pro" before compiling, you will need to run "qmake structure-naming.pro" </li>
+<li> In your install directory you will need to rename, or make a symbolic link, the sturcture-naming executable to structure-naming-master. </li>
+</ol>
