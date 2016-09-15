@@ -7,7 +7,7 @@ In addition, each disease site has a script that can simply load all of the TG-2
 #Installation
 To use the structure-naming tool Qt4 will need to be installed. The easiest way to do this is to use the opencsw.org update tool. The following instructions are for installing that tool, getting an updated list of packages, and downloading the Qt4 development files. The structure-naming tool was development using Qt4 version 5.8, as it is the most recent one available from csw.
 <br><br>
-For Solaris 10/11
+<b>For Solaris 10/11</b>
 <br>As super user/root:
 <br>pkgadd -d http://get.opencsw.org/now
 <br>pkgutil -U -u -y
@@ -32,6 +32,11 @@ For the Solaris 10 machine used for testing this program, the program “make”
 <br><br>
 Finally, you can test the program by running the command to see if it will run
 <br>./structure-naming
+<br>Once the program is working you will need to install it to your desired location using the command ./install.sh. This will prompt you to give a directory to install the structure-naming program and supporting files. If the specified installation directory already exits, this installer will not continue and instruct you to choose another location as this will not overwrite any existing directory.
+<br><br>Next the two Pinnacle scripts need to be set in your HotScripts list to use this program in your Pinnacle session. These scripts are load_structure_naming.Script and add_structures.Script and can be found under {your install directory}/scripts/. Once these scripts are added to your script list you should be able to use the structure-naming tool.
 
-Also, you can ignore the follow error message if you see it in the console:
-Unable to load library icui18n “Cannot load library icui18n
+Also, you can ignore the follow error message if you see it in the console when running this program:
+"Unable to load library icui18n “Cannot load library icui18n"
+
+#Running the Program
+You can start the <b>structure-naming</b> program by running the load_structure_naming.Script. After you run the program and select your structure names, save the new structure list. To load the new structures in your open plan run the add_structures.Script. Any structures in your new list, not already in the current ROI list, will be loaded. For more information about how to use this program please read the attached ClinicalStructureNamingToolUserGuide.pdf file.
