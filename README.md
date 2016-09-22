@@ -9,26 +9,26 @@ To use the structure-naming tool Qt4 will need to be installed. The easiest way 
 <br><br>
 <b>For Solaris 10/11</b>
 <br>As super user/root:
-<br>pkgadd -d http://get.opencsw.org/now
+<br><b><i>pkgadd -d http://get.opencsw.org/now
 <br>pkgutil -U -u -y
 <br>/opt/csw/bin/pkgutil -U
-<br>/opt/csw/bin/pkgutil -y -i qt4_dev 
+<br>/opt/csw/bin/pkgutil -y -i qt4_dev</i></b>
 <br><br>
-You can list the new Qt4 with this command:
-<br>/usr/sbin/pkgchk -L CSWqt4-dev
-<br><br>Once Qt4 is installed, your environmental variables must be updated. Using the instructions above will but the Qt4 files under /opt/csw/bin and /opt/csw/lib which is not a default location for Solaris. If you are using the c-shell (csh) add the following to your .cshrc file in your home holder:
-<br>setenv PATH ${PATH}:/opt/csw/bin 
+You can list the new Qt4 files with this command:
+<br><b><i>/usr/sbin/pkgchk -L CSWqt4-dev</i></b>
+<br><br>Once Qt4 is installed, your environmental variables must be updated. Using the instructions above will put the Qt4 files under <b></i>/opt/csw/bin</i></b> and <b><i>/opt/csw/lib</i></b> which is not a default location for Solaris. If you are using the c-shell (csh) add the following to your .cshrc file in your home holder:
+<br><b>setenv PATH ${PATH}:/opt/csw/bin 
 <br>setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/opt/csw/lib
-<br>setenv STRUCTURENAMING "your install directory"
+<br>setenv STRUCTURENAMING "your install directory"</b>
 <br><br>
 There will be a slightly different process of setting the environmental variables if you use a different shell, but instructions can be found online.
 <br><br>
 After Qt4 is installed, download and unzip the structure-naming git repository. In the structure-naming directory run the following commands to compile the program:
-<br>qmake -project
+<br><b><i>qmake -project
 <br>qmake structure-naming.pro
-<br>/usr/ccs/bin/make
+<br>/usr/ccs/bin/make </i></b>
 <br><br>
-For the Solaris 10 machine used for testing this program, the program “make” was installed under /usr/ccs/bin/ but it might be different for other configurations and versions of Solaris.
+For the Solaris 10 machine used for testing this program, the program <b><i>make</b></i> was installed under <b><i>/usr/ccs/bin/</b></i> but it might be different for other configurations and versions of Solaris.
 <br><br>
 Finally, you can test the program by running the command to see if it will run
 <br>./structure-naming
