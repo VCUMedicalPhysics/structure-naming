@@ -35,8 +35,7 @@ Finally, you can test the program by running the command to see if it will run
 <br>Once the program is working you will need to install it to your desired location using the command ./install.sh. This will prompt you to give a directory to install the structure-naming program and supporting files. If the specified installation directory already exits, this installer will not continue and instruct you to choose another location as this will not overwrite any existing directory.
 <br><br>Next the two Pinnacle scripts need to be set in your HotScripts list to use this program in your Pinnacle session. These scripts are load_structure_naming.Script and add_structures.Script and can be found under {your install directory}/scripts/. Once these scripts are added to your script list you should be able to use the structure-naming tool.
 
-Also, you can ignore the follow error message if you see it in the console when running this program:
-"Unable to load library icui18n “Cannot load library icui18n"
+Also, you can ignore the follow error message about loading the icui18n library.
 
 #Running the Program
 You can start the <b>structure-naming</b> program by running the load_structure_naming.Script. After you run the program and select your structure names, save the new structure list. To load the new structures in your open plan run the add_structures.Script. Any structures in your new list, not already in the current ROI list, will be loaded. For more information about how to use this program please read the attached ClinicalStructureNamingToolUserGuide.pdf file.
