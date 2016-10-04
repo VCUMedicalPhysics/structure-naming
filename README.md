@@ -4,8 +4,15 @@ A series of scripts were developed to aid structure naming in the Pinnacle Treat
 Once the desired list of structure names is chosen, the names are saved to disk. A secondary Pinnacle script loads the new list of names into the active Pinnacle session and populates the region of interest list. Duplicate names are not inserted.
 In addition, each disease site has a script that can simply load all of the TG-263 approved structure names that are deemed commonly used by a radiation oncologist for a given diagnosis. The final script removes all structures from the Pinnacle region of interest list if no contouring was done. This feature provides a quick way to remove unnecessary structures added by the site specific bulk import.
 
-#Installation
-To use the structure-naming tool Qt4 will need to be installed. The easiest way to do this is to use the opencsw.org update tool. The following instructions are for installing that tool, getting an updated list of packages, and downloading the Qt4 development files. The structure-naming tool was development using Qt4 version 5.8, as it is the most recent one available from csw.
+#Installing
+To fully use the structure-naming program and associated scripts you will need to install both Qt4 and the structure-naming program.
+
+#Installing Qt4 without Internet Access
+If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. Run the command <b>./install_qt4_dev_i386.sh</b> to install the qt4_dev_all_i386.pkg package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the /opt/csw directory.
+
+#Installation Qt4 with Internet Access
+The easiest way to do this is to use the opencsw.org update tool. The following instructions are for installing that tool, getting an updated list of packages, and downloading the Qt4 development files. The structure-naming tool was development using Qt4 version 5.8, as it is the most recent one available from csw.
+
 <br><br>
 <b>For Solaris 10/11</b>
 <br>As super user/root:
@@ -21,8 +28,10 @@ You can list the new Qt4 files with this command:
 <br>setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/opt/csw/lib
 <br>setenv STRUCTURENAMING "your install directory"</b>
 <br><br>
-There will be a slightly different process of setting the environmental variables if you use a different shell, but instructions can be found online.
+The exact variables to set should be provided at the end of the install process. This document assumes you will be using c-shell (csh). There will be a slightly different process of setting the environmental variables if you use a different shell, but instructions can be found online.
 <br><br>
+
+#Installing structure-naming
 After Qt4 is installed, download and unzip the structure-naming-master git repository. In the structure-naming-master directory run the following commands to compile the program:
 <br><b><i>qmake -project
 <br>qmake structure-naming-master.pro
