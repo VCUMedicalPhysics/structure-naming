@@ -8,5 +8,8 @@ Store.At.ScriptCommand.AppendString = "/scripts/innerscript.Script";
 RoiList.ChildrenEachCurrent.#"@".Script.ExecuteNow = Store.At.ScriptCommand.Value;
 DeleteSelectedROIs = "Delete Selected ROIs";
 
+IF.FileErrorList.HasElements.THEN.FileErrorList.DestroyAllChildren = "";
+WindowList.FileErrorHierarchy.Destroy = "";
+
 WindowList.RoiDelete.Unrealize = "Dismiss";
 RoiList.#"*".IsSelectedForDeletion = "0";
