@@ -8,7 +8,7 @@ In addition, each disease site has a script that can simply load all of the TG-2
 To fully use the structure-naming program and associated scripts you will need to install both Qt4 and the structure-naming program.
 
 #Installing Qt4 without Internet Access
-If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. Under the <b>qt4</b> subdirectory you will find a script named <b>install_qt4_dev_i386.sh</b>. Run this program with the command <b>./install_qt4_dev_i386.sh</b> to install the qt4_dev_all_i386.pkg package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the <b>/opt/csw</b> directory.
+If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. Under the <b><i>qt4</i></b> subdirectory you will find a script named <b><i>install_qt4_dev_i386.sh</i></b>. Run this program with the command <b><i>./install_qt4_dev_i386.sh>/i></b> to install the qt4_dev_all_i386.pkg package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the <b><i>/opt/csw</i></b> directory.
 
 #Installation Qt4 with Internet Access
 If you have Internet access on your Pinnacle workstation you can install Qt4 manually or use the opencsw.org update tool. 
@@ -25,21 +25,18 @@ opencsw.org is a website that provides precompiled programs and libraries for So
 You can list the new Qt4 files with this command:
 <br><b><i>/usr/sbin/pkgchk -L CSWqt4-dev</i></b>
 
-<br>
 #After the Qt4 Install
 <br>Once Qt4 is installed, your environmental variables must be updated. Using the instructions above will put the Qt4 files under <b></i>/opt/csw/bin</i></b> and <b><i>/opt/csw/lib</i></b> which is not a default location for Solaris. If you are using the c-shell (csh) add the following to your .cshrc file in your home holder:
 <br><b>setenv PATH ${PATH}:/opt/csw/bin 
 <br>setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/opt/csw/lib
 <br>setenv STRUCTURENAMING "your install directory"</b>
 <br><br>
-The exact variables to set should be provided at the end of the install process. This document assumes you will be using c-shell (csh). There will be a slightly different process of setting the environmental variables if you use a different shell, but instructions can be found online.
+The exact variables to set will be provided at the end of the install process. This document assumes you will be using c-shell (csh). There will be a slightly different process of setting the environmental variables if you use a different shell, but instructions can be found online.
 <br>
-Even if you are using c-shell your environmental variables may need to be set in somewhere other than .cshrc. If that is the case try looking at <b>/usr/local/etc/environment</b>.
-<br><br>
+Even if you are using c-shell your environmental variables may need to be set in somewhere other than .cshrc. If that is the case try looking at <b><i>/usr/local/etc/environment</i></b>.
 
 #Installing the structure-naming Package
-
-<br>Once the program is working you will need to install it to your desired location using the command ./install.sh. This will prompt you to give a directory to install the structure-naming program and supporting files. If the specified installation directory already exits, this installer will not continue and instruct you to choose another location as this will not overwrite any existing directory.
+Once the program is working you will need to install it to your desired location using the command ./install.sh. This will prompt you to give a directory to install the structure-naming program and supporting files. If the specified installation directory already exits, this installer will not continue and instruct you to choose another location as this will not overwrite any existing directory.
 <br><br>Next the two Pinnacle scripts need to be set in your HotScripts list to use this program in your Pinnacle session. These scripts are <b><i>load_structure_naming</i></b>.Script and <b><i>add_structures.Script</i></b> and can be found under <b><i>{your install directory}/scripts/</i></b>. Once these scripts are added to your script list you should be able to use the structure-naming tool.
 
 Also, you can ignore the follow error message about loading the icui18n library.
