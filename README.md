@@ -8,7 +8,9 @@ In addition, each disease site has a script that can simply load all of the TG-2
 To fully use the structure-naming program and associated scripts you will need to install both Qt4 and the structure-naming program.
 
 #Installing Qt4 without Internet Access
-If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. Under the <b><i>qt4</i></b> subdirectory you will find a script named <b><i>install_qt4_dev_i386.sh</i></b>. Run this program with the command <b><i>./install_qt4_dev_i386.sh</i></b> to install the <b><i>qt4_dev_all_i386.pkg</i></b> package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the <b><i>/opt/csw</i></b> directory.
+If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. You will need to download the file found here: <b><i>https://github.com/VCUMedicalPhysics/structure-naming/blob/master/qt4/qt4_dev_all_i386.pkg</i></b> and move it to the <b><i>qt4</i></b> subdirectory. If you are using git to get these files you can use the command <b><i>git lfs pull</i></b> command. To do this you will need to install Git Large File Support, information can be found at https://git-lfs.github.com/.
+
+Under the <b><i>qt4</i></b> subdirectory you will find a script named <b><i>install_qt4_dev_i386.sh</i></b>. Run this program with the command <b><i>./install_qt4_dev_i386.sh</i></b> to install the <b><i>qt4_dev_all_i386.pkg</i></b> package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the <b><i>/opt/csw</i></b> directory.
 
 #Installation Qt4 with Internet Access
 If you have Internet access on your Pinnacle workstation you can install Qt4 manually or use the opencsw.org update tool. 
