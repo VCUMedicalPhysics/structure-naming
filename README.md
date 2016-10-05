@@ -8,25 +8,24 @@ In addition, each disease site has a script that can simply load all of the TG-2
 To fully use the structure-naming program and associated scripts you will need to install both Qt4 and the structure-naming program.
 
 #Installing Qt4 without Internet Access
-If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. Under the <b>qt4</b> subdirectory you will find a script named <b>install_qt4_dev_i386.sh</b>. Run this program with the command <b>./install_qt4_dev_i386.sh</b> to install the qt4_dev_all_i386.pkg package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the /opt/csw directory.
+If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. Under the <b>qt4</b> subdirectory you will find a script named <b>install_qt4_dev_i386.sh</b>. Run this program with the command <b>./install_qt4_dev_i386.sh</b> to install the qt4_dev_all_i386.pkg package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the <b>/opt/csw<b> directory.
 
 #Installation Qt4 with Internet Access
 If you have Internet access on your Pinnacle workstation you can install Qt4 manually or use the opencsw.org update tool. 
-opencsw.org is a website that have precompiled programs and libraries for Solaris including the Qt4 development package.
-The following instructions are for installing that tool, getting an updated list of packages, and downloading the Qt4 development files. The structure-naming tool was development using Qt4 version 5.8, as it is the most recent one available from csw.
+opencsw.org is a website that provides precompiled programs and libraries for Solaris including the Qt4 development package. The following instructions are for installing that tool, getting an updated list of packages, and downloading the Qt4 development files. The structure-naming tool was development using Qt4 version 5.8, as it is the most recent one available from csw.
 
-<br><br>
+<br>
 <b>For Solaris 10/11</b>
 <br>As super user/root:
 <br><b><i>pkgadd -d http://get.opencsw.org/now
 <br>pkgutil -U -u -y
 <br>/opt/csw/bin/pkgutil -U
 <br>/opt/csw/bin/pkgutil -y -i qt4_dev</i></b>
-<br><br>
+<br>
 You can list the new Qt4 files with this command:
 <br><b><i>/usr/sbin/pkgchk -L CSWqt4-dev</i></b>
 
-<br><br>
+<br>
 #After the Qt4 Install
 <br>Once Qt4 is installed, your environmental variables must be updated. Using the instructions above will put the Qt4 files under <b></i>/opt/csw/bin</i></b> and <b><i>/opt/csw/lib</i></b> which is not a default location for Solaris. If you are using the c-shell (csh) add the following to your .cshrc file in your home holder:
 <br><b>setenv PATH ${PATH}:/opt/csw/bin 
