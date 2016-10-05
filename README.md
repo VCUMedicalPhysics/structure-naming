@@ -49,10 +49,9 @@ To load this program from Pinnacle you will need to add <b><i>load_structure_nam
 #Use structure-naming from git
 The build instructions and Pinnacle scripts were created for using with the downloaded zip file from the master branch of this git repository. If you are planning on using the structure-naming tool from a clone of this repository a few minor changes will need to be made.
 <ol>
-<li> Instead of running <b><i>qmake structure-naming.pro</i></b> before compiling, you will need to run <b><i>qmake structure-naming.pro</i></b> </li>
+<li> Instead of running <b><i>qmake structure-naming-master.pro</i></b> before compiling, you will need to run <b><i>qmake structure-naming.pro</i></b> </li>
 <li> In your install directory you will need to rename, or make a symbolic link, the sturcture-naming executable to structure-naming-master. </li>
 </ol>
-<br><br>
 #Compiling structure-naming Manually
 To compile the structure-naming program use the following commands in the main structure-naming(-master) directory:
 <b>/opt/csw/bin/qmake -project</b> # this create the .pro file
