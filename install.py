@@ -11,8 +11,6 @@ def main():
     print('\nPinnacle Scripting System Installer')
     install_directory = raw_input('Structure Naming Install Path: ')
     install_directory = install_directory.strip()
-    print('install ' + install_directory)
-    print('*')
 
     if isdir(install_directory):
         print('\nDirectory ' + install_directory + ' already exists. Please remove that directory before installing or '
@@ -22,17 +20,15 @@ def main():
         print('\nCopying files...')
         if not exists(install_directory):
             makedirs(install_directory)
-        #copy('install.py', join(install_directory, 'install.py'))
-        #copy('install.sh', join(install_directory, 'install.sh'))
         copytree('scripts', join(install_directory, 'scripts'))
         copytree('structures', join(install_directory, 'structures')) 
-    #try:
-    #    copy('structure-naming', install_directory)
-    #except:
-    #    try:
-    #        copy('structure-naming-master', install_directory)
-    #    except:
-    #        pass
+    try:
+        copy('structure-naming', install_directory)
+    except:
+        try:
+            copy('structure-naming-master', install_directory)
+        except:
+            pass
     updated_save_path = ''
 
     structure_naming_path = join(install_directory, 'scripts')
@@ -55,8 +51,14 @@ def main():
     store_file.close()
 
     environ['STRUCTURENAMING'] = install_directory
-    environ['PATH'] = environ['PATH'] + ":/opt/csw/bin"
-    environ['LD_LIBRARY_PATH'] = environ['LD_LIBRARY_PATH'] + ':/opt/csw/lib'
+    try:
+        environ['PATH'] += ":/opt/csw/bin:/usr/ccs/bin:/usr/sfw/bin"
+    except KeyError:
+        environ['PATH'] = "/opt/csw/bin:/usr/ccs/bin:/usr/sfw/bin"
+    try:
+        environ['LD_LIBRARY_PATH'] += ':/opt/csw/lib'
+    except KeyError:
+        environ['LD_LIBRARY_PATH'] = '/opt/csw/lib'
 
     system('qmake -project')
     try:
