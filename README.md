@@ -8,7 +8,7 @@ In addition, each disease site has a script that can simply load all of the TG-2
 To fully use the structure-naming program and associated scripts you will need to install both Qt4 and the structure-naming program.
 
 #Installing Qt4 without Internet Access
-If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. Under the <b><i>qt4</i></b> subdirectory you will find a script named <b><i>install_qt4_dev_i386.sh</i></b>. Run this program with the command <b><i>./install_qt4_dev_i386.sh</i></b> to install the qt4_dev_all_i386.pkg package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the <b><i>/opt/csw</i></b> directory.
+If your Pinnacle workstation does not have Internet access you will need to manually install the Qt4-dev package and dependencies. Under the <b><i>qt4</i></b> subdirectory you will find a script named <b><i>install_qt4_dev_i386.sh</i></b>. Run this program with the command <b><i>./install_qt4_dev_i386.sh</i></b> to install the <b><i>qt4_dev_all_i386.pkg</i></b> package. You will need to do this as root or superuser. This will install the necessary programs and libraries for Qt4 under the <b><i>/opt/csw</i></b> directory.
 
 #Installation Qt4 with Internet Access
 If you have Internet access on your Pinnacle workstation you can install Qt4 manually or use the opencsw.org update tool. 
@@ -26,7 +26,7 @@ You can list the new Qt4 files with this command:
 <br><b><i>/usr/sbin/pkgchk -L CSWqt4-dev</i></b>
 
 #After the Qt4 Install
-<br>Once Qt4 is installed, your environmental variables must be updated. Using the instructions above will put the Qt4 files under <b></i>/opt/csw/bin</i></b> and <b><i>/opt/csw/lib</i></b> which is not a default location for Solaris. If you are using the c-shell (csh) add the following to your .cshrc file in your home holder:
+Once Qt4 is installed, your environmental variables must be updated. Using the instructions above will put the Qt4 files under <b></i>/opt/csw/bin</i></b> and <b><i>/opt/csw/lib</i></b> which is not a default location for Solaris. If you are using the c-shell (csh) add the following to your .cshrc file in your home holder:
 <br><b>setenv PATH ${PATH}:/opt/csw/bin 
 <br>setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/opt/csw/lib
 <br>setenv STRUCTURENAMING "your install directory"</b>
@@ -46,17 +46,11 @@ Also, you can ignore the follow error message about loading the icui18n library.
 #Running the Program
 To load this program from Pinnacle you will need to add <b><i>load_structure_naming.Script</i></b> and <b><i>add_structures.Script</i></b> to your HotScripts list. These files can be found in the scripts directory under the previously specified installation location. The first script will load the GUI and will allow you to save the new structure list. Once the structure names are saved and the GUI is closed, run <b><i>add_structures.Script</i></b>. Any structures in your new list, not already in the current ROI list, will be loaded. For more information about how to use this program please read the attached ClinicalStructureNamingToolUserGuide.pdf file.
 
-#Use structure-naming from git
-The build instructions and Pinnacle scripts were created for using with the downloaded zip file from the master branch of this git repository. If you are planning on using the structure-naming tool from a clone of this repository a few minor changes will need to be made.
-<ol>
-<li> Instead of running <b><i>qmake structure-naming-master.pro</i></b> before compiling, you will need to run <b><i>qmake structure-naming.pro</i></b> </li>
-<li> In your install directory you will need to rename, or make a symbolic link, the sturcture-naming executable to structure-naming-master. </li>
-</ol>
 #Compiling structure-naming Manually
 To compile the structure-naming program use the following commands in the main structure-naming(-master) directory:
-<b>/opt/csw/bin/qmake -project</b> # this create the .pro file
-<b>/opt/csw/bin/qmake structure-naming.pro</b> or <b>/opt/csw/bin/qmake structure-naming-master.pro</b> # creates Makefile
-<b>/usr/ccs/bin/make<b> # compiles the program
+<br><b>/opt/csw/bin/qmake -project</b> # this create the .pro file
+<br><b>/opt/csw/bin/qmake structure-naming.pro</b> or <b>/opt/csw/bin/qmake structure-naming-master.pro</b> # creates Makefile
+<br><b>/usr/ccs/bin/make<b> # compiles the program
 <br><br>
 You may be able to avoid using the full paths for make/qmake programs if you add the paths to your PATH environmental variable.
 
